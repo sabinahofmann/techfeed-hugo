@@ -30,7 +30,7 @@
               {{ else }}
               <li class="nav-item">
                 <a class="nav-link" {{if findRE `^http` .URL}}target="_blank" rel="noopener" {{end}}
-                  href="{{if findRE `^#` .URL}}{{site.BaseURL | absLangURL}}{{ .URL }}{{else}}{{.URL | absLangURL}}{{end}}">{{ .Name }}</a>
+                  href="{{.URL | relLangURL}}">{{ .Name }}</a>
               </li>
               {{ end }}
               {{ end }}

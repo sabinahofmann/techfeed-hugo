@@ -1,0 +1,183 @@
+// subtitle job definition
+.subtitle {
+  font-size: 17px;
+  text-transform: uppercase;
+  color: $bright_gray;
+  font-weight: 300;
+}
+
+// block
+.block-title h4 {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.block-title h4:before {
+  background: darken($primary-color, 5);
+  content: "";
+  height: 8px;
+  left: 50%;
+  position: absolute;
+  top: -20px;
+  width: 20px;
+  transform:translate3d(-50%,0,0);
+  -webkit-transform:translate3d(-50%,0,0);
+  -ms-transform: translate3d(-50%,0,0);
+  -ms-transform: translate(-50%,0);
+  -o-transform: translate(-50%,0);
+}
+
+// block as a list
+.listing {
+  padding: 30px 0;
+  position: relative;
+  left: 13.5%;
+  margin-bottom: 3%;
+}
+
+
+.listing:after {
+  background-color: #f1f1f1;;
+  content: " ";
+  height: 100%;
+  left: 36.5%;
+  position: absolute;
+  top: 0;
+  width: 1px;
+  z-index: 0;
+
+}
+
+.listing-inner:before {
+  color: darken($primary-color, 5);
+  background-color: darken($primary-color, 5);
+  top: -12px;
+  content: " ";
+  height: 12px;
+  left: 36%;
+  position: absolute;
+  width: 12px;
+  z-index: 0;
+}
+
+
+.listing-inner:after {
+  color: darken($primary-color, 5);
+  background-color: darken($primary-color, 5);
+  bottom: -12px;
+  content: " ";
+  height: 12px;
+  left: 36%;
+  position: absolute;
+  width: 12px;
+  z-index: 0;
+}
+
+.listing .listing-event {
+  position: relative;
+  padding: 0;
+}
+
+
+.listing .listing-event .data.left {
+  float: left;
+  margin-left: -17%;
+  padding-right: 3%;
+  text-align: right;
+  width: 53%;
+}
+
+
+.listing .listing-event .data.right {
+  margin-left: 35%;
+  padding-left: 5.5%;
+  text-align: left;
+  width: 71%;
+}
+
+.listing .listing-event .data li{
+font-size: 17px;
+font-weight: 400;
+line-height:26px;
+list-style: none;
+}
+
+.listing  a {
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  bottom: -25px;
+}
+
+.listing  a:hover {
+  color:darken($primary-color, 5);;
+}
+
+.listing  a.btn-1 {
+left:3px;
+}
+
+.listing  a.btn-2 {
+right:26.8%
+}
+
+// skills
+.skills-wrapper li p {
+  width: 20em;
+  line-height: inherit;
+  display: inline-block;
+}
+
+.skills-wrapper li h5 {
+  font-weight: 600;
+  font-size: inherit;
+}
+
+// languages
+.language-name {
+  color: $bright_gray;
+  font-style: italic;
+  font-variant: all-small-caps
+}
+
+.language-bar {
+  background: darken($primary-color, 5);
+  height:18px;
+  margin-top: -2%;
+  margin-bottom: 2%;
+}
+
+// hobbies as a list
+ul.hoppies-list li {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+ul.hoppies-list li span {
+  border: 1px solid darken($primary-color, 5);
+  color: darken($primary-color, 5);
+  display: block;
+  height: 65px;
+  width: 65px;
+  border-radius: 100%;
+  -moz-border-radius:100%;
+  -webkit-border-radius :100%;
+  -ms-border-radius:100%;
+  -o-border-radius: 100%;
+}
+
+ul.hoppies-list li span i{
+  font-size: 33px;
+  line-height: 60px;
+  display: block;
+}
+
+ul.hoppies-list li h5 {
+  color: $bright_gray;
+  margin-top: 10px;
+  font-style: italic;
+  font-variant: all-small-caps
+}
+

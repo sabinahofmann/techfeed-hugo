@@ -7,13 +7,13 @@
         <!-- image path -->
         {{ $imagePath:= .Params.image }}
         <!-- image CDN -->
-        {{ if hasPrefix $imagePath "http" }}
+        {{ if (and ($imagePath) (hasPrefix $imagePath "http")) }}
         <img loading="lazy" decoding="async" src="{{ $imagePath | safeURL }}" alt="{{ .Title }}" class="img-fluid">
         {{ else }}
         <!-- /image cdn -->
 
         <!-- image processing for multiple device -->
-        {{ if fileExists (add `assets/` $imagePath) }}
+        {{ if fileExists "assets/{{$imagePath}}" }}
         {{ $image:= resources.Get $imagePath }}
         {{ $imageFallback:= $image.Resize "1110x" }}
         {{ $imageXL:= $image.Resize "1110x webp" }}

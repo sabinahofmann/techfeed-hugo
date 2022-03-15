@@ -6,14 +6,159 @@
         <!-- image path -->
         {{ $imagePath:= .Params.image }}
         <!-- image processing for multiple device -->
-        {{ if fileExists (add `assets/` $imagePath) }}
+        {{ if fileExists "assets/{{$imagePath}}" }}
         {{ $image:= resources.Get $imagePath }}
         <img loading="lazy" class="img-fluid rounded mb-5" decoding="async" src="{{$image.RelPermalink}}"
           alt="post image">
         {{ end }}
         <!-- /image cdn -->
-        <h2>{{ .Title }}</h2>
+        <h1 class="text-uppercase font-secondary">{{ .Title }}</h1>
+        <h3 class="subtitle primary_font">{{ .Params.subtitle }}</h3>
         <div class="content">{{ .Content }}</div>
+      </div>
+    </div>
+    <div class="block-content justify-content-center">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block-title">
+            <h4 class="text-uppercase text-center font-secondary">Personal info</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          {{ if isset .Params "personal_info" }}
+            <div class="listing">
+              <div class="listing-inner">
+                <div class="listing-event">
+                  <ul class="data left">
+                    <li>Name</li>
+                    <li>Nationality</li>
+                    <li>Freelance</li>
+                  </ul>
+                  <ul class="data right">
+                    <li>Firstname Lastname</li>
+                    <li>Neveland</li>
+                    <li>Available</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    <div class="block-content justify-content-center">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block-title">
+            <h4 class="text-uppercase text-center font-secondary">Experience</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          {{ if isset .Params "experience" }}
+            <ul class="timeline">
+              {{ range $i, $e := .Params.experience }}
+                <li {{ if (not (modBool $i 2)) }}class="timeline-inverted" {{ end }}>
+                    <div class="timeline-image">
+                        <img class="img-circle img-responsive" src="" alt="">
+                    </div>
+                    <div class="timeline-panel primary_font">
+                        <div class="timeline-heading">
+                            <p class="text-grey">{{ .date }}</p>
+                            <p>{{ .title | markdownify }}</p>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="text-grey">{{ .description  | markdownify }}</p>
+                        </div>
+                    </div>
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </div>
+      </div>
+      <div class="block-content justify-content-center">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="block-title">
+              <h4 class="text-uppercase text-center font-secondary">Skills</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            {{ if isset .Params "personal_info" }}
+              <div class="listing">
+                <div class="listing-inner">
+                  <div class="listing-event">
+                    <ul class="data left clearfix skills-wrapper">
+                      <li>
+                        <h5>Programming languages</h5>
+                        <p>
+                          {{ range $i, $e := .Params.programming_languages }}{{ if gt $i 0 }}, {{ end }}{{ $e }}{{ end }}
+                        </p>
+                      </li>
+                      <li>
+                        <h5>Frameworks</h5>
+                        <p>
+                          {{ range $i, $e := .Params.frameworks }}{{ if gt $i 0 }}, {{ end }}{{ $e }}{{ end }}
+                        </p>
+                      </li>
+                      <li>
+                        <h5>Miscellaneous</h5>
+                        <p>
+                          {{ range $i, $e := .Params.miscellaneous_tools }}{{ if gt $i 0 }}, {{ end }}{{ $e }}{{ end }}
+                        </p>
+                      </li>
+                    </ul>
+                    <ul class="data right clearfix skills-wrapper">
+                        <li>
+                          <h5>Soft skills</h5>
+                          <p>
+                            {{ range $i, $e := .Params.soft_skills }}{{ if gt $i 0 }}, {{ end }}{{ $e }}{{ end }}
+                          </p>
+                        </li>
+                        <li>
+                          <h5>Languages</h5>
+                          {{ range $i, $e := .Params.languages }}
+                            {{ $renderWidth:= mul .percent 0.5}}
+                            <p class="language-name">{{ .language }} ({{.percent}}%)</p>
+                            <div class="language-bar" style="width:{{ $renderWidth }}%"></div>
+                          {{ end }}
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      <div class="block-content justify-content-center">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="block-title">
+              <h4 class="text-uppercase text-center font-secondary">Hobbies & Interests</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <ul class="hoppies-list">
+              {{ range $i, $e := .Params.hoppies }}
+              <li>
+                <span>
+                    <i class="{{ $e.icon }}"></i>
+                </span>
+                <h5>{{ $e.title }}</h5>
+              </li>
+              {{ end}}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
