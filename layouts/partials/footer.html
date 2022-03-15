@@ -1,4 +1,4 @@
-<footer class="section border-top">
+<footer class="section">
   <div class="container">
     <div class="row text-center">
       <div class="col-lg-12">
@@ -9,7 +9,12 @@
             </a></li>
           {{- end}}
         </ul>
-        <P class="mb-0">{{ site.Params.copyright | markdownify }}</P>
+        <p class="footer-line mb-0">
+          {{ range site.Params.footer }}
+            <a href="{{ .url | relLangURL }}">{{ .name }}</a> |
+          {{ end }}
+          @2020 - {{ now.Year }} sabina-hofmann | Powered by Hugo
+        </p>
       </div>
     </div>
   </div>

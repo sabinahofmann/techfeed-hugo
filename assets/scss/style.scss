@@ -5,6 +5,7 @@ $white: {{.white | default "#fff"}};
 $black: {{.black | default "#000"}};
 $dark: {{.dark | default "#333333"}};
 $gray: {{.gray | default "#f6f6f6"}};
+$bright_gray: {{.bright_gray | default "#999999"}};
 $body-color: {{.body_color | default "#fff"}};
 $border-color: {{.border_color | default "#ECECEC"}};
 
@@ -27,5 +28,9 @@ $icon-font: '{{.icon_font | default "Font Awesome 5 Free"}}';
 @import 'templates/navigation.scss';
 
 @import 'templates/main.scss';
+
+@import 'templates/timeline.scss';
+
+@import 'templates/about.scss';
 
 @import 'custom.scss';
