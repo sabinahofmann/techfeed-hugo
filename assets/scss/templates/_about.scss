@@ -7,6 +7,12 @@
 }
 
 // block
+.block-content {
+  margin-top: 70px;
+  padding-top: 30px;
+}
+
+
 .block-title h4 {
   font-size: 20px;
   margin-bottom: 40px;
@@ -126,7 +132,8 @@ right:26.8%
 .skills-wrapper li p {
   width: 20em;
   line-height: inherit;
-  display: inline-block;
+  overflow-wrap: break-word;
+  display: table-cell;
 }
 
 .skills-wrapper li h5 {

@@ -13,7 +13,7 @@
           {{ range site.Params.footer }}
             <a href="{{ .url | relLangURL }}">{{ .name }}</a> |
           {{ end }}
-          @2020 - {{ now.Year }} sabina-hofmann | Powered by Hugo
+          {{ site.Params.copyright}}
         </p>
       </div>
     </div>
