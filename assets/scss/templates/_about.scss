@@ -130,7 +130,7 @@ right:26.8%
 
 // skills
 .skills-wrapper li p {
-  width: 20em;
+  width: 34em;
   line-height: inherit;
   overflow-wrap: break-word;
   display: table-cell;
@@ -139,6 +139,7 @@ right:26.8%
 .skills-wrapper li h5 {
   font-family: $secondary_font;
   font-size: inherit;
+  margin-top: revert;
 }
 
 // languages
@@ -151,7 +152,6 @@ right:26.8%
 .language-bar {
   background: darken($primary-color, 5);
   height:18px;
-  margin-top: -2%;
   margin-bottom: 2%;
 }
 
