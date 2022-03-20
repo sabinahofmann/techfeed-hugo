@@ -17,37 +17,41 @@
         <div class="content">{{ .Content }}</div>
       </div>
     </div>
-    <div class="block-content justify-content-center">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="block-title">
-            <h4 class="text-uppercase text-center font-secondary">Personal info</h4>
+    {{ if isset .Params "personal_info" }}
+      <div class="block-content justify-content-center">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="block-title">
+              <h4 class="text-uppercase text-center font-secondary">Personal info</h4>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          {{ if isset .Params "personal_info" }}
+        <div class="row">
+          <div class="col-md-12">
             <div class="listing">
               <div class="listing-inner">
                 <div class="listing-event">
                   <ul class="data left">
-                    <li>Name</li>
-                    <li>Nationality</li>
-                    <li>Freelance</li>
+                    {{ range .Params.personal_info }}
+                      {{ range $k, $v := . }}
+                        <li>{{ humanize $k }}</li>
+                      {{ end }}
+                    {{ end }}
                   </ul>
                   <ul class="data right">
-                    <li>Firstname Lastname</li>
-                    <li>Neveland</li>
-                    <li>Available</li>
+                    {{ range .Params.personal_info }}
+                      {{ range $k, $v := . }}
+                        <li>{{ $v }}</li>
+                      {{ end }}
+                    {{ end }}
                   </ul>
                 </div>
               </div>
             </div>
-          {{ end }}
+          </div>
         </div>
       </div>
-    </div>
+    {{ end }}
     <div class="block-content justify-content-center">
       <div class="row">
         <div class="col-md-12">
