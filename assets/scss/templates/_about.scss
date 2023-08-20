@@ -22,7 +22,7 @@
 .block-title h4:before {
   background: darken($primary-color, 5);
   content: "";
-  height: 8px;
+  height: 2px;
   left: 50%;
   position: absolute;
   top: -20px;
@@ -65,8 +65,25 @@
   position: absolute;
   width: 12px;
   z-index: 0;
+  @include desktop-xl {
+    left: 36%;
+  }
+  @include desktop-lg {
+    left: 36%;
+  }
+  @include desktop {
+    left: 35.5%;
+  }
+  @include tablet {
+    left: 35.5%;
+  }
+  @include mobile {
+    left: 35%;
+  }
+  @include mobile-xs {
+    left: 35%;
+  }
 }
-
 
 .listing-inner:after {
   color: darken($primary-color, 5);
@@ -78,6 +95,24 @@
   position: absolute;
   width: 12px;
   z-index: 0;
+  @include desktop-xl {
+    left: 36%;
+  }
+  @include desktop-lg {
+    left: 36%;
+  }
+  @include desktop {
+    left: 35.5%;
+  }
+  @include tablet {
+    left: 35.5%;
+  }
+  @include mobile {
+    left: 35%;
+  }
+  @include mobile-xs {
+    left: 35%;
+  }
 }
 
 .listing .listing-event {
