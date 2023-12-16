@@ -24,18 +24,18 @@ primary_font = "Lora:ital@0;1"
 primary_font_type = "serif" # [serif/serif]
 secondary_font = "Oswald"
 secondary_font_type = "sans-serif" # [serif/sans-serif]
-icon_font = "Font Awesome 5 Free"
+icon_font = "Font Awesome 6 Free"
 
 
 ############################# Plugins ##############################
 
-# CSS Plugins
+# CSS Plugins - load fontawesome 6 from static folder
 [[params.plugins.css]]
-link = "plugins/font-awesome/fontawesome.min.css"
+link = "fontawesome/css/fontawesome.css"
 [[params.plugins.css]]
-link = "plugins/font-awesome/brands.css"
+link = "fontawesome/css/brands.css"
 [[params.plugins.css]]
-link = "plugins/font-awesome/solid.css"
+link = "fontawesome/css/solid.css"
 
 # JS Plugins
 [[params.plugins.js]]

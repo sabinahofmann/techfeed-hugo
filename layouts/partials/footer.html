@@ -13,7 +13,7 @@
           {{ range site.Params.footer }}
             <a href="{{ .url | relLangURL }}">{{ .name }}</a> |
           {{ end }}
-          {{ site.Params.copyright}}
+          {{ replace site.Params.copyright "{year}" now.Year | safeHTML }}
         </p>
       </div>
     </div>
