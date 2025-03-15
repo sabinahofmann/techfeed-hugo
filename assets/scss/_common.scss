@@ -76,9 +76,11 @@ p {
       width: 56px;
       line-height: 55px;
       display: inline-block;
-      color: $dark;
+      // color: $dark;
       text-align: center;
-      background-color: $gray;
+      // background-color: $gray;
+      background-color: darken($primary-color, 5);
+      color: $white;
       padding: 0;
       border-radius: 50%;
 
