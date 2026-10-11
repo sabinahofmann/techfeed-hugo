@@ -10,23 +10,22 @@
         <!-- image path -->
         {{ $imagePath:= .image }}
         <!-- image processing for multiple device -->
-        {{ if fileExists "assets/{{$imagePath}}" }}
-          {{ $image:= resources.Get $imagePath }}
-          <img loading="lazy" class="img-fluid rounded-circle mb-5" decoding="async" class="img-fluid w-100"
-            src="{{$image.RelPermalink}}" alt="post image" width="{{$image.Width}}" height="{{$image.Height}}">
+        {{ if fileExists (add "assets/" $imagePath) }}
+          {{ $image := resources.Get $imagePath }}
+          {{ if $image }}
+            <img loading="lazy" class="img-fluid rounded-circle mb-5" decoding="async"
+                src="{{ $image.RelPermalink }}" alt="post image" width="{{ $image.Width }}" height="{{ $image.Height }}">
+          {{ end }}
         {{ else }}
           <div class="mb-4 home-icon">
             <i class="fas fa-mug-hot fa-5x"></i>
           </div>
         {{ end }}
-        {{with .title}}<h2 class="text-uppercase font-secondary mb-4">{{.|markdownify}}</h3>{{end}}
+        {{with .title}}<h2 class="text-uppercase font-secondary mb-4">{{.|markdownify}}</h2>{{end}}
         {{with .content}}<em class="d-block intro-text text-grey">{{.|markdownify}}</em>{{end}}
       </div>
     </div>
   </div>
 </section>
-{{end}}
-
-</section>
-
+{{ end }}
 {{ end }}

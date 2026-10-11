@@ -13,7 +13,7 @@
         <!-- /image cdn -->
 
         <!-- image processing for multiple device -->
-        {{ if fileExists "assets/{{$imagePath}}" }}
+        {{ if fileExists (add "assets/" $imagePath) }}
         {{ $image:= resources.Get $imagePath }}
         {{ $imageFallback:= $image.Resize "1110x" }}
         {{ $imageXL:= $image.Resize "1110x webp" }}
@@ -47,7 +47,6 @@
               <a href="{{`about/` | relLangURL }}" class="card-meta-author text-primary">
                 {{ site.Params.author }}
               </a>
-          </div>
           </em>
         </div>
         <div class="content">{{.Content}}</div>

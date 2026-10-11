@@ -4,12 +4,15 @@
     <div class="row justify-content-center">
       <div class="col-lg-8 text-center">
         <!-- image path -->
-        {{ $imagePath:= .Params.image }}
-        <!-- image processing for multiple device -->
-        {{ if fileExists "assets/{{$imagePath}}" }}
-        {{ $image:= resources.Get $imagePath }}
-        <img loading="lazy" class="img-fluid rounded mb-5" decoding="async" src="{{$image.RelPermalink}}"
-          alt="post image">
+        {{ $imagePath := .Params.image }}
+        {{ if $imagePath }}
+          <!-- image processing for multiple device -->
+          {{ if fileExists (add "assets/" $imagePath) }}
+            {{ $image := resources.Get $imagePath }}
+            {{ if $image }}
+              <img loading="lazy" class="img-fluid rounded-circle mb-5" decoding="async" src="{{ $image.RelPermalink }}" alt="post image">
+            {{ end }}
+          {{ end }}
         {{ end }}
         <!-- /image cdn -->
         <h1 class="text-uppercase font-secondary">{{ .Title }}</h1>
@@ -65,7 +68,7 @@
           {{ if isset .Params "experience" }}
             <ul class="timeline">
               {{ range $i, $e := .Params.experience }}
-                <li {{ if (not (modBool $i 2)) }}class="timeline-inverted" {{ end }}>
+                <li {{ if not (math.ModBool $i 2) }}class="timeline-inverted"{{ end }}>
                     <div class="timeline-image">
                         <img class="img-circle img-responsive" src="" alt="">
                     </div>
