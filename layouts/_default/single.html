@@ -79,13 +79,20 @@
             <div class="col-12 mb-5">
               <h2 class="text-center font-secondary text-uppercase">Similer Post</h2>
             </div>
-
-            {{ $related := (where site.RegularPages "Section" "in" site.Params.mainSections) }}
-            {{ range first 3 $related }}
-            <div class="col-lg-4 col-md-4 col-sm-6">
-              {{ .Render "post" }}
+          {{ $related := .Site.RegularPages.Related . | first 3 }}
+          {{ with $related }}
+            <div class="similar-post">
+              <h3>Verwandte Beiträge</h3>
+              <div class="row">
+                {{ range . }}
+                  {{/* Hier Ihr bestehendes Card-/Post-Markup einfügen */}}
+                  <div class="col-md-4">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  </div>
+                {{ end }}
+              </div>
             </div>
-            {{ end }}
+          {{ end }}
           </div>
         </div>
       </div>
