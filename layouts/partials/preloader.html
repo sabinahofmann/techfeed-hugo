@@ -1,38 +1,31 @@
 {{ if site.Params.preloader.enable }}
 <div class="preloader">
 
-  <!-- get image path -->
-  {{ $preloaderPath:= site.Params.preloader.preloader }}
+  {{ $preloaderPath := site.Params.preloader.preloader }}
   {{ if $preloaderPath }}
 
-  <!-- check image existence -->
-  {{ if fileExists (add `assets/` $preloaderPath) }}
-  {{ $preloader:= resources.Get $preloaderPath }}
-
-  <!-- image extension -->
+  {{ if fileExists (add "assets/" $preloaderPath) }}
+  {{ $preloader := resources.Get $preloaderPath }}
   {{ $preloader_ext := path.Ext $preloader }}
-  <!-- image width -->
   {{ $preloader_width := $preloader.Width }}
 
-  <!-- not gif -->
+  {{ $src := "" }}
+  {{ $fallback := "" }}
+
   {{ if ne $preloader_ext ".gif" }}
-  <!-- webp image -->
-  {{ $option_webp := add (add (string $preloader_width) "x") " webp" }}
-  {{ .Scratch.Set "preloader" ($preloader.Resize $option_webp).RelPermalink }}
-  <!-- fallback image -->
-  {{ $option := add (string $preloader_width) "x" }}
-  {{ .Scratch.Set "preloader_fallback" ($preloader.Resize $option).RelPermalink }}
-
-  <!-- gif image -->
+    {{ $option_webp := printf "%dx webp" $preloader_width }}
+    {{ $src = ($preloader.Resize $option_webp).RelPermalink }}
+    
+    {{ $option := printf "%dx" $preloader_width }}
+    {{ $fallback = ($preloader.Resize $option).RelPermalink }}
   {{ else }}
-  {{ .Scratch.Set "preloader" $preloader.RelPermalink }}
+    {{ $src = $preloader.RelPermalink }}
   {{ end }}
 
-  <img class="img-fluid" loading="preload" decoding="async" src="{{.Scratch.Get `preloader`}}" aria-label="preloader" title="preloader"
-    onerror="this.onerror=null;this.src='{{.Scratch.Get `preloader_fallback`}}'" alt="preloader">
+  <img class="img-fluid" loading="preload" decoding="async" src="{{ $src }}" aria-label="preloader" title="preloader"
+    {{ if $fallback }}onerror="this.onerror=null;this.src='{{ $fallback }}'"{{ end }} alt="preloader">
   {{ end }}
   {{ end }}
-  <!-- /check image existence -->
 
 </div>
 {{ end }}

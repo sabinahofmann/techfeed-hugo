@@ -7,13 +7,13 @@
         <!-- image path -->
         {{ $imagePath:= .Params.image }}
         <!-- image CDN -->
-        {{ if hasPrefix $imagePath "http" }}
+        {{ if (and ($imagePath) (hasPrefix $imagePath "http")) }}
         <img loading="lazy" decoding="async" src="{{ $imagePath | safeURL }}" alt="{{ .Title }}" class="img-fluid">
         {{ else }}
         <!-- /image cdn -->
 
         <!-- image processing for multiple device -->
-        {{ if fileExists (add `assets/` $imagePath) }}
+        {{ if fileExists (add "assets/" $imagePath) }}
         {{ $image:= resources.Get $imagePath }}
         {{ $imageFallback:= $image.Resize "1110x" }}
         {{ $imageXL:= $image.Resize "1110x webp" }}
@@ -47,7 +47,6 @@
               <a href="{{`about/` | relLangURL }}" class="card-meta-author text-primary">
                 {{ site.Params.author }}
               </a>
-          </div>
           </em>
         </div>
         <div class="content">{{.Content}}</div>
@@ -80,13 +79,20 @@
             <div class="col-12 mb-5">
               <h2 class="text-center font-secondary text-uppercase">Similer Post</h2>
             </div>
-
-            {{ $related := (where site.RegularPages "Section" "in" site.Params.mainSections) }}
-            {{ range first 3 $related }}
-            <div class="col-lg-4 col-md-4 col-sm-6">
-              {{ .Render "post" }}
+          {{ $related := .Site.RegularPages.Related . | first 3 }}
+          {{ with $related }}
+            <div class="similar-post">
+              <h3>Verwandte Beiträge</h3>
+              <div class="row">
+                {{ range . }}
+                  {{/* Hier Ihr bestehendes Card-/Post-Markup einfügen */}}
+                  <div class="col-md-4">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  </div>
+                {{ end }}
+              </div>
             </div>
-            {{ end }}
+          {{ end }}
           </div>
         </div>
       </div>

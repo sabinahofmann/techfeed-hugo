@@ -31,13 +31,6 @@ content= "My name is Linda Smith. I am a writer, I like to travel and I love to 
 enable = false
 preloader = "" # use jpg, png, svg or gif format.
 
-# cookies
-[cookies]
-enable = false
-expire_days = 2
-content = "This site uses cookies. By continuing to use this website, you agree to their use."
-button = "I Accept"
-
 ############################# social site ########################
 [[social]]
 icon = "fab fa-facebook-f"
